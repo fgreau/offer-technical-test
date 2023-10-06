@@ -8,4 +8,32 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext
 		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
+	<changeSet id="202305091100" author="fgreau">
+		<comment>creation of data_user table</comment>
+
+		<createTable tableName="data_user">
+			<column name="username" type="varchar(255)">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="birth_date" type="date">
+				<constraints nullable="false" />
+			</column>
+			<column name="country_of_residence" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="creation_date" type="date"/>
+			<column name="phone_number" type="varchar(64)"/>
+			<column name="gender" type="varchar(64)"/>
+			<column name="deleted" type="boolean" defaultValueBoolean="false"/>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="202305091115" author="fgreau">
+		<comment>adding indexes to user table</comment>
+
+		<createIndex tableName="data_user" indexName="idx_deleted">
+			<column name="deleted"/>
+		</createIndex>
+	</changeSet>
+	
 </databaseChangeLog>
