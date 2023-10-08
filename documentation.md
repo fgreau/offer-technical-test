@@ -31,7 +31,7 @@ As per the requirements, this app provides 2 endpoints, allowing the client to :
 - Register a user
 - Get the details of a registered user
 
-While the app is running, you will have access to a [Swagger API documentation](localhost:8080/swagger-ui/index.html) allowing to call the endpoints directly.
+While the app is running, you will have access to a [Swagger API documentation](http://localhost:8080/swagger-ui/index.html) allowing to call the endpoints directly.
 
 Alternatively, you can import the [Postman collection](offre_tech_test.postman_collection.json) should you prefer running the calls through Postman.
 
