@@ -84,7 +84,7 @@ class UserServiceTest extends AbstractTest {
 
     @Test
     void givenCorrectDtoMinimalConfiguration_whenRegisters_thenUserRegisteredAndCorrectDto() {
-        final UserDto dto = new UserDto(USERNAME, BIRTHDATE, COUNTRY);
+        final UserDto dto = UserDto.builder().username(USERNAME).birthDate(BIRTHDATE).countryOfResidence(COUNTRY).build();
 
         final UserDto registeredDto = userService.registerUser(dto);
 
@@ -227,10 +227,13 @@ class UserServiceTest extends AbstractTest {
      * @return dto
      */
     private UserDto getDto() {
-        final UserDto dto = new UserDto(USERNAME, BIRTHDATE, COUNTRY);
-        dto.setPhoneNumber(PHONE_NUMBER);
-        dto.setGender(GENDER);
-        return dto;
+        return UserDto.builder()
+            .username(USERNAME)
+            .birthDate(BIRTHDATE)
+            .countryOfResidence(COUNTRY)
+            .phoneNumber(PHONE_NUMBER)
+            .gender(GENDER)
+            .build();
     }
 
 }

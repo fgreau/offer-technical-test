@@ -7,6 +7,12 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
+import java.time.LocalDate;
+import java.util.Map;
+import java.util.Optional;
+
+import static java.util.function.Predicate.not;
+
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
@@ -35,5 +41,20 @@ public interface UserMapper {
         }
 
         return value.toLowerCase();
+    }
+
+    /**
+     * Mapper Map<String, String> -> DTO.
+     *
+     * @param map Map
+     * @return DTO
+     */
+    UserDto mapToDto(final Map<String, String> map);
+
+    default LocalDate mapStringToLocalDate(String dateString) {
+        return Optional.ofNullable(dateString)
+            .filter(not(String::isBlank))
+            .map(LocalDate::parse)
+            .orElse(null);
     }
 }

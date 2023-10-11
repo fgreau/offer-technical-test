@@ -36,9 +36,13 @@ class UserMapperTest extends AbstractTest {
 
     @Test
     void givenUserDto_whenMaps_thenCorrectEntity() {
-        final UserDto dto = new UserDto(USERNAME, BIRTHDATE, COUNTRY_UPPERCASE);
-        dto.setPhoneNumber(PHONE_NUMBER);
-        dto.setGender(GENDER);
+        final UserDto dto = UserDto.builder()
+            .username(USERNAME)
+            .birthDate(BIRTHDATE)
+            .countryOfResidence(COUNTRY_UPPERCASE)
+            .phoneNumber(PHONE_NUMBER)
+            .gender(GENDER)
+            .build();
 
         final User entity = userMapper.map(dto);
 
